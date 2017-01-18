@@ -1,0 +1,23 @@
+{
+  "name": "angular-component-route",
+  "version": "1.0.0",
+  "description": "Testando angular route component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lffranca/angular-component-route.git"
+  },
+  "author": "Lucas França <lucas@mmgrupo.adm.br>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lffranca/angular-component-route/issues"
+  },
+  "homepage": "https://github.com/lffranca/angular-component-route#readme",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "ngcomponentrouter": "^2.1.0"
+  }
+}

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Testando angular route component">
+    <meta name="keywords" content="Angular1,Route,Component">
+    <meta name="author" content="Lucas França">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Angular Route Component</title>
+</head>
+<body ng-app="appTest">
+
+    <app></app>
+    
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/ngcomponentrouter/angular_1_router.js"></script>
+    <script>
+        function ViloesListComponent() {
+            
+        }
+
+        function HeroListComponent() {
+            
+        }
+
+
+        angular.module('viloes', [])
+
+        .component('viloesList', {
+            template: `
+                <div>
+                    <a></a>
+                </div>
+            `,
+            controller: ViloesListComponent
+        })
+
+        .component('viloes', {
+            template: `
+                <h2>Viloes</h2>
+                <ng-outlet></ng-outlet>
+            `,
+            $routeConfig: [
+                {
+                    path: '/',
+                    name: 'ViloesList',
+                    component: 'viloesList',
+                    useAsDefault: true
+                },
+            ]
+        });
+
+
+        angular.module('heroes', [])
+
+        .component('heroList', {
+            template: `
+                <div>
+                    <a></a>
+                </div>
+            `,
+            controller: HeroListComponent
+        })
+
+        .component('heroes', {
+            template: `
+                <h2>Heroes</h2>
+                <ng-outlet></ng-outlet>
+            `,
+            $routeConfig: [
+                {
+                    path: '/test',
+                    name: 'HeroList',
+                    component: 'heroList',
+                    useAsDefault: true
+                },
+            ]
+        });
+
+        angular.module('appTest', ['ngComponentRouter','heroes','viloes'])
+
+        .config(function($locationProvider) {
+            $locationProvider.html5Mode(true);
+        })
+
+        .value('$routerRootComponent', 'app')
+
+        .component('app', {
+            template:
+            '<nav>\n' +
+            '  <a ng-link="[\'Heroes\']">Heroes</a>\n' +
+            '  <a ng-link="[\'Viloes\']">Vilões</a>\n' +
+            '</nav>\n' +
+            '<ng-outlet></ng-outlet>\n',
+            $routeConfig: [
+                {path: '/heroes/...', name: 'Heroes', component: 'heroes', useAsDefault: true },
+                {path: '/viloes', name: 'Viloes', component: 'viloes'}
+            ]
+        })
+
+
+
+    </script>
+</body>
+</html>
